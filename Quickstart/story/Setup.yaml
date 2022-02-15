@@ -1,0 +1,49 @@
+backgrounds:
+  room_day: assets/backgrounds/room_day.jpg
+  room_night: assets/backgrounds/room_night.jpg
+  room_night_light: assets/backgrounds/room_night_light.jpg
+  school_front_afternoon: assets/backgrounds/school_from_afternoon.jpg
+  kitchen: assets/backgrounds/kitchen.png
+
+characters:
+  deuzi:
+    displayName: Deuzilene
+    speechColour: "#ca90cf"
+    looks:
+      normal: assets/characters/Char3NormalSchool.png
+      happy: assets/characters/Char3HappySchool.png
+      angry: assets/characters/Char3AngrySchool.png
+
+  mia:
+    displayName: Mia
+    speechColour: "#ca90cf"
+
+cgs:
+  phone1: assets/objects/phone1.png
+  phone2: assets/objects/phone2.png
+  fan_dim: assets/objects/fan_dim.png
+  fan_off: assets/objects/fan_off.png
+  fan_exposed_on: assets/objects/fan_exposed_on.png
+  fan_exposed_off: assets/objects/fan_exposed_off.png
+  fan_lightbulb_removed: assets/objects/fan_lightbulb_removed.png
+  lightswitch_on: assets/objects/lightswitch_on.png
+  map: assets/objects/map.png
+  drawer: assets/objects/drawer.png
+  lightbulb: assets/objects/lightbulb.png
+  fan_on_working: assets/objects/fan_on_working.png
+
+music:
+  rollingCredits: assets/audio/Evan_Schaeffer_-_01_-_Aqueduct.mp3
+  morningBGM: assets/audio/Evan_Schaeffer_-_03_-_Glow.mp3
+sfx:
+  ringtoneSFX: assets/audio/nokia6210-24-elise.mp3
+  ringtoneSFX2: assets/audio/alcatel-top_secret.mp3
+  click: assets/audio/click.wav
+  zap: assets/audio/zap.mp3
+
+extra:
+  spritesheets:
+    rain: assets/ambient/rain.png 17 17
+    sakura: assets/ambient/sakura-petals.png 17 26
+    snowflakes: assets/ambient/snowflakes.png 17 17
+    snowflakes_large: assets/ambient/snowflakes_large.png 64 64

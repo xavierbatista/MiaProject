@@ -1,0 +1,99 @@
+start:
+  - play morningBGM:
+  - show room_night: WITH FADE CONTINUE
+  - show fan_exposed_off: WITH FADE AT 400,60 CONTINUE
+  - show lightswitch_on: WITH FADE AT 700,300 CONTINUE
+  - mia says: Hi, I'm Mia. I'm a 6th grader and now I'm gunna do some homework or something.
+  - mia says: It's a little dark in here.
+  - scene: justEnteredRoom
+
+justEnteredRoom:
+  - visualchoice:
+      - fan_exposed_off AT 400,60:
+          - mia says: Hmm.. maybe I should turn the lights on
+          - scene: justEnteredRoom
+      - lightswitch_on AT 700,300:
+          - play click: WITH CUT
+          - hide fan_exposed_off:
+          - show fan_exposed_on: AT 400,60
+          - mia says: Oh no! One of the lightbulbs are burnt out!
+          - mia says: I should remove it!
+          - scene: lightbulbBurntOutLightsOn
+
+lightbulbBurntOutLightsOn:
+  - visualchoice:
+      - fan_exposed_on AT 400,60:
+          - play zap: WITH CUT CONTINUE
+          - effect SHAKE:
+          - mia says: OWCH! I got shocked!
+          - scene: lightbulbBurntOutLightsOn
+      - lightswitch_on AT 700,300:
+          - play click: WITH CUT
+          - scene: lightbulbBurntOutLightsOff
+
+lightbulbBurntOutLightsOff:
+  - visualchoice:
+      - fan_exposed_off AT 400,60:
+          - scene: lightbulbRemoved
+
+      - lightswitch_on AT 700,300:
+          - play click: WITH CUT
+          - scene: lightbulbBurntOutLightsOn
+
+lightbulbRemoved:
+  - hide fan_exposed_on:
+  - show fan_lightbulb_removed: AT 400,60 CONTINUE
+  - mia says: Yay I removed it. Now I just need to replace it
+  - mia says: I should get a new one in the kitchen
+  - visualchoice:
+      - map AT 60,600:
+          - visualchoice:
+              - map AT 400,300:
+                  - scene: kitchen
+
+hasLightBulb:
+  - hide lightbulb: WITH CUT CONTINUE
+  - hide ALL: WITH FADE CONTINUE
+  - show room_night: WITH FADE CONTINUE
+  - show lightbulb: AT 50,550 WITH FADE CONTINUE
+  - show lightswitch_on: AT 700,300 WITH FADE CONTINUE
+  - show fan_lightbulb_removed: AT 400,60 WITH FADE CONTINUE
+  - visualchoice:
+      - fan_lightbulb_removed AT 400,60:
+          - hide lightbulb:
+          - hide fan_lightbulb_removed: WITH FADE CONTINUE
+          - show fan_exposed_off: AT 400,60
+          - mia says: it fits.
+          - visualchoice:
+              - lightswitch_on AT 700,300:
+                  - play click: WITH CUT
+                  - hide room_night: WITH CUT CONTINUE
+                  - show room_day: WITH CUT CONTINUE
+                  - hide fan_exposed_off:
+                  - show fan_on_working: AT 400,60
+                  - mia says: yay I did it.
+                  - scene: endGame
+
+kitchen:
+  - hide ALL: WITH FADE CONTINUE
+  - show drawer: WITH FADE AT 750,500 CONTINUE
+  - show kitchen: WITH FADE CONTINUE
+  - mia says: ok now I just need to find that lightbulb..
+  - visualchoice:
+      - drawer AT 750,500:
+          - visualchoice:
+              - lightbulb AT 750,500:
+                  - show lightbulb: AT 50,550
+                  - mia says: ok now I can fix my lights.
+                  - visualchoice:
+                      - map AT 60,600:
+                          - visualchoice:
+                              - map AT 400,300:
+                                  - scene: hasLightBulb
+
+endGame:
+  - hide ALL:
+  - effect ROLLINGCREDITS:
+    endGame: true
+    text:
+      - congrats
